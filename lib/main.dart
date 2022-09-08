@@ -40,7 +40,7 @@ class MyHomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SecondView()));
+              context, MaterialPageRoute(builder: (context) => AddItemsView()));
         },
         child: const Icon(Icons.add),
       ),
@@ -49,7 +49,7 @@ class MyHomePage extends StatelessWidget {
 }
 
 Widget _todoList() {
-  var todo = [
+  var todoItems = [
     "Diska",
     "Städa",
     "Plugga",
@@ -62,14 +62,14 @@ Widget _todoList() {
     "Dricka öl",
   ];
 
-  var list = List.generate(todo.length, (index) => todo[index]);
+  var list = List.generate(todoItems.length, (index) => todoItems[index]);
 
   return ListView.builder(
     padding: const EdgeInsets.only(
       top: 20,
       bottom: kFloatingActionButtonMargin + 55,
     ),
-    itemCount: todo.length,
+    itemCount: todoItems.length,
     itemBuilder: (context, index) {
       return Column(
         children: <Widget>[
@@ -98,8 +98,8 @@ Widget _listItem(text) {
   );
 }
 
-class SecondView extends StatelessWidget {
-  const SecondView({Key? key}) : super(key: key);
+class AddItemsView extends StatelessWidget {
+  const AddItemsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +112,7 @@ class SecondView extends StatelessWidget {
         children: [
           _todoInputField(),
           Container(height: 24),
-          _buttonRow(),
+          _addButton(),
         ],
       ),
     );
@@ -131,11 +131,14 @@ class SecondView extends StatelessWidget {
     );
   }
 
-  Widget _buttonRow() {
+  Widget _addButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.add),
+        ),
         const Text(
           "ADD",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
