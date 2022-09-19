@@ -22,16 +22,7 @@ class MyHomePage extends StatelessWidget {
                   state.filterBy,
                   style: const TextStyle(fontSize: 18),
                 ),
-                PopupMenuButton(
-                    icon: const Icon(Icons.more_vert),
-                    onSelected: (value) => state.setFilterBy(value as String),
-                    itemBuilder: (context) => [
-                          const PopupMenuItem(value: 'all', child: Text("All")),
-                          const PopupMenuItem(
-                              value: 'done', child: Text("Done")),
-                          const PopupMenuItem(
-                              value: 'undone', child: Text("Undone")),
-                        ]),
+                _popupMenuButton(context),
               ],
             ),
           )
@@ -83,5 +74,18 @@ Widget _textContainer() {
         style: TextStyle(fontSize: 24),
       ),
     ),
+  );
+}
+
+Widget _popupMenuButton(context) {
+  return PopupMenuButton(
+    icon: const Icon(Icons.more_vert),
+    onSelected: (value) => Provider.of<MyState>(context, listen: false)
+        .setFilterBy(value as String),
+    itemBuilder: (context) => [
+      const PopupMenuItem(value: 'all', child: Text("All")),
+      const PopupMenuItem(value: 'done', child: Text("Done")),
+      const PopupMenuItem(value: 'undone', child: Text("Undone")),
+    ],
   );
 }
