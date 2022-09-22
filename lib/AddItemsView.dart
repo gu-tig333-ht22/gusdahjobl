@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '/model.dart';
+import './model.dart';
+import './CustomSnackBar.dart';
 
 class AddItemsView extends StatefulWidget {
   const AddItemsView({super.key});
@@ -37,7 +38,7 @@ class AddItemsViewState extends State<AddItemsView> {
         controller: myController,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
-          labelText: "What are you going to do?",
+          hintText: "What are you going to do?",
           labelStyle: TextStyle(fontSize: 22),
           isDense: true,
         ),
@@ -56,8 +57,12 @@ class AddItemsViewState extends State<AddItemsView> {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           onPressed: () {
-            Navigator.pop(
-                context, TodoItem(label: myController.text, isDone: false));
+            myController.text != ""
+                ? Navigator.pop(
+                    context, TodoItem(label: myController.text, isDone: false))
+                : ScaffoldMessenger.of(context).showSnackBar(
+                    CustomSnackBar.showSnackBar(
+                        "Can't create an empty item", Colors.red));
           },
         ),
       ],

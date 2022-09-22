@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'model.dart';
+import './model.dart';
+import './CustomSnackBar.dart';
 import 'package:provider/provider.dart';
 
 class ItemsList extends StatelessWidget {
@@ -41,6 +42,8 @@ class ItemsList extends StatelessWidget {
             icon: const Icon(Icons.clear),
             onPressed: () {
               Provider.of<MyState>(context, listen: false).removeItem(item);
+              ScaffoldMessenger.of(context).showSnackBar(
+                  CustomSnackBar.showSnackBar("Item removed", Colors.blue));
             },
           ),
         ),

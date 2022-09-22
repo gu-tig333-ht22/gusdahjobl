@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ItemView.dart';
-import 'model.dart';
+import './ItemView.dart';
+import './model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
