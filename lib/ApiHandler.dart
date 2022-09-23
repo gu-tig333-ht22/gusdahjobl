@@ -1,14 +1,13 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import './model.dart';
 
-String _apiKey = 'c9e5ef4c-613b-4f4b-8221-b1a907145ad5';
+const String _apiKey = 'c9e5ef4c-613b-4f4b-8221-b1a907145ad5';
 
 class ApiConstants {
-  static String _baseUrl = 'https://todoapp-api.apps.k8s.gu.se/';
-  static String _getTodosEndpoint = 'todos?key=$_apiKey';
-  static String _postEndpoint = 'todos?key=$_apiKey';
+  static const String _baseUrl = 'https://todoapp-api.apps.k8s.gu.se/';
+  static const String _getTodosEndpoint = 'todos?key=$_apiKey';
+  static const String _postEndpoint = 'todos?key=$_apiKey';
 }
 
 class ApiHandler {
@@ -19,7 +18,7 @@ class ApiHandler {
     if (response.statusCode == 200) {
       return responseHandler(response);
     } else {
-      throw Exception('Failed to load Item');
+      throw Exception('Failed to load Items');
     }
   }
 
