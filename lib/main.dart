@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ItemView.dart';
-import 'model.dart';
+import './ItemView.dart';
+import './model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Steg 2',
+      title: 'Steg 3',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
